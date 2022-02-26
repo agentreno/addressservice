@@ -30,3 +30,11 @@ class Address(models.Model):
         blank=True,
         null=True,
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['line_one', 'line_two', 'line_three', 'line_four',
+                        'postcode', 'city'], name='unique_address'
+            )
+        ]
