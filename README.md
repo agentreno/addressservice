@@ -5,9 +5,6 @@
 User will not be able to add a duplicated address to their account
 - Put a UniqueConstraint on the model
 
-User is able to retrieve a large number of address entries in a practical way
-- Turn on pagination
-
 User is able to filter retrieved addresses using request parameters
 - Turn on SearchFilter
 
