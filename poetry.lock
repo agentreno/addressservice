@@ -27,6 +27,32 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-autoslug"
+version = "1.9.8"
+description = "An automated slug field for Django."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+cyrillic = ["pytils (>=0.2)"]
+translitcodec = ["translitcodec (>=0.3)"]
+
+[[package]]
+name = "django-cities-light"
+version = "3.9.0"
+description = "Simple alternative to django-cities"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+django-autoslug = ">=1.9.8"
+progressbar2 = ">=3.51.4"
+pytz = "*"
+unidecode = ">=0.04.13"
+
+[[package]]
 name = "djangorestframework"
 version = "3.13.1"
 description = "Web APIs for Django, made easy."
@@ -37,6 +63,33 @@ python-versions = ">=3.6"
 [package.dependencies]
 django = ">=2.2"
 pytz = "*"
+
+[[package]]
+name = "progressbar2"
+version = "4.0.0"
+description = "A Python Progressbar library to provide visual (yet text based) progress to long running operations."
+category = "main"
+optional = false
+python-versions = ">=3.7.0"
+
+[package.dependencies]
+python-utils = ">=3.0.0"
+
+[package.extras]
+docs = ["sphinx (>=1.8.5)"]
+tests = ["flake8 (>=3.7.7)", "pytest (>=4.6.9)", "pytest-cov (>=2.6.1)", "pytest-mypy", "freezegun (>=0.3.11)", "sphinx (>=1.8.5)"]
+
+[[package]]
+name = "python-utils"
+version = "3.1.0"
+description = "Python Utils is a module with some convenient utilities not included with the standard Python install"
+category = "main"
+optional = false
+python-versions = ">3.6.0"
+
+[package.extras]
+docs = ["mock", "sphinx", "python-utils"]
+tests = ["flake8", "pytest", "pytest-cov", "pytest-mypy", "pytest-flake8", "pytest-asyncio", "sphinx", "types-setuptools"]
 
 [[package]]
 name = "pytz"
@@ -62,10 +115,18 @@ category = "main"
 optional = false
 python-versions = ">=2"
 
+[[package]]
+name = "unidecode"
+version = "1.3.3"
+description = "ASCII transliterations of Unicode text"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c0078c3e83377e3e48bb93f467a4d5191e5c70051b55c5397e5b7663b8939b26"
+content-hash = "4956a9c342c1ee7d7613294f5f9aa6903f9041754a20a950fdf867f110790c11"
 
 [metadata.files]
 asgiref = [
@@ -76,9 +137,25 @@ django = [
     {file = "Django-4.0.2-py3-none-any.whl", hash = "sha256:996495c58bff749232426c88726d8cd38d24c94d7c1d80835aafffa9bc52985a"},
     {file = "Django-4.0.2.tar.gz", hash = "sha256:110fb58fb12eca59e072ad59fc42d771cd642dd7a2f2416582aa9da7a8ef954a"},
 ]
+django-autoslug = [
+    {file = "django-autoslug-1.9.8.tar.gz", hash = "sha256:bae66c27d35615f472865b99c4d107f3b3add3d22ee337e84960fc07694abd45"},
+    {file = "django_autoslug-1.9.8-py2.py3-none-any.whl", hash = "sha256:26459eeddec207e307c55777a10fc25d17f4978753695340b16a17ed248a6f70"},
+]
+django-cities-light = [
+    {file = "django-cities-light-3.9.0.tar.gz", hash = "sha256:2e3fc6314f0f50b8b19309c263db21e1a7a9971e0aee5c670aba280b4cb3e088"},
+    {file = "django_cities_light-3.9.0-py3-none-any.whl", hash = "sha256:1267199f1632c3f07a307e6eeddda9efe5ce9cf75079535baec5ba417d718186"},
+]
 djangorestframework = [
     {file = "djangorestframework-3.13.1-py3-none-any.whl", hash = "sha256:24c4bf58ed7e85d1fe4ba250ab2da926d263cd57d64b03e8dcef0ac683f8b1aa"},
     {file = "djangorestframework-3.13.1.tar.gz", hash = "sha256:0c33407ce23acc68eca2a6e46424b008c9c02eceb8cf18581921d0092bc1f2ee"},
+]
+progressbar2 = [
+    {file = "progressbar2-4.0.0-py2.py3-none-any.whl", hash = "sha256:2562ba3e554433f08e81fb7b786208b19de135f3ca1c5da1787d9b05558e6247"},
+    {file = "progressbar2-4.0.0.tar.gz", hash = "sha256:14d3165a1781d053ffaa117daf27cc706128d2ec1d2977fdb05b6bb079888013"},
+]
+python-utils = [
+    {file = "python-utils-3.1.0.tar.gz", hash = "sha256:4dace6420c5f50d6509251fa0aee0e2a0b826bbc8a5d2a6d7e99dca80e78a7f3"},
+    {file = "python_utils-3.1.0-py2.py3-none-any.whl", hash = "sha256:93d9cdc8b8580669eeb4418128b3dfb71118c332fa6fda3f204e7ad4900363f1"},
 ]
 pytz = [
     {file = "pytz-2021.3-py2.py3-none-any.whl", hash = "sha256:3672058bc3453457b622aab7a1c3bfd5ab0bdae451512f6cf25f64ed37f5b87c"},
@@ -91,4 +168,8 @@ sqlparse = [
 tzdata = [
     {file = "tzdata-2021.5-py2.py3-none-any.whl", hash = "sha256:3eee491e22ebfe1e5cfcc97a4137cd70f092ce59144d81f8924a844de05ba8f5"},
     {file = "tzdata-2021.5.tar.gz", hash = "sha256:68dbe41afd01b867894bbdfd54fa03f468cfa4f0086bfb4adcd8de8f24f3ee21"},
+]
+unidecode = [
+    {file = "Unidecode-1.3.3-py3-none-any.whl", hash = "sha256:a5a8a4b6fb033724ffba8502af2e65ca5bfc3dd53762dedaafe4b0134ad42e3c"},
+    {file = "Unidecode-1.3.3.tar.gz", hash = "sha256:8521f2853fd250891dc27d156a9d30e61c4e76319da963c4a1c27083a909ac30"},
 ]

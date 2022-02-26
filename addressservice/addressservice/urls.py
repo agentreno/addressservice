@@ -21,6 +21,7 @@ from api import views
 
 router = routers.DefaultRouter()
 router.register('address', views.AddressViewSet)
+router.register('city', views.CityViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
