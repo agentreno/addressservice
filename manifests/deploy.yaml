@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: addressservice
+  name: addressservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: addressservice
+  template:
+    metadata:
+      labels:
+        app: addressservice
+    spec:
+      containers:
+      - image: karlhopkinsonturrell/addressservice:latest
+        name: addressservice
+        ports:
+        - name: http
+          containerPort: 8000
