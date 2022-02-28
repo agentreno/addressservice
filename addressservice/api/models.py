@@ -1,4 +1,4 @@
-from cities_light.models import City
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -25,7 +25,13 @@ class Address(models.Model):
     )
     postcode = models.CharField(max_length=20)
     city = models.ForeignKey(
-        City,
+        'cities_light.City',
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+    user = models.ForeignKey(
+        User,
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
@@ -35,6 +41,7 @@ class Address(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=['line_one', 'line_two', 'line_three', 'line_four',
-                        'postcode', 'city'], name='unique_address'
-            )
+                        'postcode', 'city'],
+                name='unique_address'
+            ),
         ]

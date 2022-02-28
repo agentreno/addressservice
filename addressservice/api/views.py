@@ -13,7 +13,6 @@ class CityViewSet(viewsets.ModelViewSet):
 
 
 class AddressViewSet(viewsets.ModelViewSet):
-    queryset = Address.objects.all()
     serializer_class = AddressSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = [
@@ -23,3 +22,22 @@ class AddressViewSet(viewsets.ModelViewSet):
         'line_four',
         'postcode',
     ]
+
+    def get_queryset(self):
+        # Retains some API functionality for unauthenticated users
+        # Good for a demo and local development, not for production
+        if not self.request.user.is_authenticated:
+            return Address.objects.filter(user=None)
+
+        return Address.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        user = self.request.user
+
+        if not self.request.user.is_authenticated:
+            user = None
+
+        serializer.is_valid(raise_exception=True)
+
+        # Necessary to add user context in to the serializer
+        return serializer.save(user=user)

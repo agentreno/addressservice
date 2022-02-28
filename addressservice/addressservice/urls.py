@@ -20,7 +20,7 @@ from api import views
 
 
 router = routers.DefaultRouter()
-router.register('address', views.AddressViewSet)
+router.register('address', views.AddressViewSet, basename='Address')
 router.register('city', views.CityViewSet)
 
 urlpatterns = [
