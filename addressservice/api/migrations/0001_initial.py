@@ -5,8 +5,11 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
+
+    dependencies = [
+        ('cities_light', '0010_auto_20200508_1851'),
+    ]
 
     operations = [
         migrations.CreateModel(
